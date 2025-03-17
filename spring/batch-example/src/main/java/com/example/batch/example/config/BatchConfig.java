@@ -11,6 +11,7 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.support.CompositeItemProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -33,10 +34,10 @@ public class BatchConfig {
      * 만약 배치 실행 중 에러가 발생하면, 현재 처리 중인 chunk는 롤백됨.
      */
     private final ItemReader<Customer> itemReader;
-    private final ItemProcessor<Customer, Customer> itemProcessor;
+    private final CompositeItemProcessor<Customer, Customer> itemProcessor;
     private final ItemWriter<Customer> itemWriter;
 
-    public BatchConfig(JobRepository jobRepository, PlatformTransactionManager transactionManager, ItemReader<Customer> itemReader, ItemProcessor<Customer, Customer> itemProcessor, ItemWriter<Customer> itemWriter) {
+    public BatchConfig(JobRepository jobRepository, PlatformTransactionManager transactionManager, ItemReader<Customer> itemReader, CompositeItemProcessor<Customer, Customer> itemProcessor, ItemWriter<Customer> itemWriter) {
         this.jobRepository = jobRepository;
         this.transactionManager = transactionManager;
         this.itemReader = itemReader;

@@ -18,13 +18,8 @@ public class Customer {
     @Column(nullable = false)
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String name;
     private String email;
 
-    public Customer(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
 
 }

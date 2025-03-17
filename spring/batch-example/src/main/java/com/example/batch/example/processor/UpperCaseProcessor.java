@@ -1,4 +1,4 @@
-package com.example.batch.example;
+package com.example.batch.example.processor;
 
 import com.example.batch.example.entity.Customer;
 import org.slf4j.Logger;
@@ -7,9 +7,9 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomerItemProcessor implements ItemProcessor<Customer, Customer> {
+public class UpperCaseProcessor implements ItemProcessor<Customer, Customer> {
 
-    private static final Logger log = LoggerFactory.getLogger(CustomerItemProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(UpperCaseProcessor.class);
 
     @Override
     public Customer process(final Customer item) throws Exception {
